@@ -1,7 +1,15 @@
 <script lang="ts">
+	import '../app.css';
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
+	import { fly, fade } from 'svelte/transition';
+
+	let menu: boolean = false;
+
+	function toggleMenu() {
+		menu = !menu;
+	}
 </script>
 
 {#if $isPreviewing}
@@ -11,151 +19,104 @@
 	</a>
 {/if}
 
-<div class="container">
-	<header class="header">
-		<a class="header__title" href="/">SvelteKit + Sanity</a>
-	</header>
-	<main>
-		<slot />
-	</main>
-	<footer class="footer">
-		<p class="footer__text">
-			Made with <svg
-				data-sanity-icon="heart-filled"
-				width="1em"
-				height="1em"
-				viewBox="0 0 25 25"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				><path
-					d="M17 16C15.8 17.3235 12.5 20.5 12.5 20.5C12.5 20.5 9.2 17.3235 8 16C5.2 12.9118 4.5 11.7059 4.5 9.5C4.5 7.29412 6.1 5.5 8.5 5.5C10.5 5.5 11.7 6.82353 12.5 8.14706C13.3 6.82353 14.5 5.5 16.5 5.5C18.9 5.5 20.5 7.29412 20.5 9.5C20.5 11.7059 19.8 12.9118 17 16Z"
-					fill="currentColor"
-					stroke="currentColor"
-					stroke-width="1.2"
-				/></svg
-			> at Sanity
-		</p>
-	</footer>
-</div>
-
 {#if $isPreviewing}
 	<VisualEditing />
 	<LiveMode />
 {/if}
 
-<style>
-	.container {
-		margin: 0 auto;
-	}
+<nav>
+	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+		<div class="flex h-16 items-center justify-between">
+			<div class="flex items-center">
+				<div class="shrink-0">
+					<img
+						class="h-8 w-auto"
+						src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
+						alt="Your Company"
+					/>
+				</div>
+				<div class="hidden sm:ml-6 sm:block">
+					<div class="flex space-x-4">
+						<a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-white">Home</a>
+					</div>
+				</div>
+			</div>
+			<div class="block sm:ml-6 sm:hidden">
+				<div class="flex items-center">
+					<div class="-mr-2 flex sm:hidden">
+						<!-- Mobile menu button -->
+						<button
+							type="button"
+							class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition-all duration-300 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+							aria-controls="mobile-menu"
+							aria-expanded="false"
+							on:click={toggleMenu}
+						>
+							<span class="absolute -inset-0.5"></span>
+							<span class="sr-only">Open main menu</span>
 
-	main {
-		margin-top: 45px;
-	}
+							<svg
+								class=" size-6 fill-white transition-all duration-300 ${menu ? 'rotate-45 ' : ''}"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								aria-hidden="true"
+								data-slot="icon"
+							>
+								{#if menu}
+									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+								{:else}
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+									/>
+								{/if}
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		{#if menu}
+			<div class="sm:hidden" id="mobile-menu">
+				<div class="space-y-1 px-2 pb-3 pt-2">
+					<a
+						href="/"
+						class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Home</a
+					>
+					<a
+						href="#"
+						class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+						>Team</a
+					>
+				</div>
+			</div>
+		{/if}
+	</div>
+</nav>
 
-	.header {
-		display: flex;
-		padding: 0 var(--space-1);
-		border-bottom: 1px solid #ced2d9;
+<main>
+	<slot />
+</main>
 
-		z-index: 10;
-		background: var(--white);
-		position: fixed;
-		left: 0;
-		right: 0;
-		top: 0;
-	}
-
-	.header .header__title {
-		font-weight: 800;
-		font-size: var(--font-size-3);
-		line-height: var(--line-height-1);
-		padding-left: var(--space-2);
-		margin: var(--space-3) 0;
-		text-decoration: none;
-		color: var(--black);
-	}
-
-	.footer {
-		display: flex;
-		justify-content: flex-end;
-		padding: 0 var(--space-3);
-	}
-
-	.footer .footer__text {
-		font-size: var(--font-size-1);
-		line-height: var(--line-height-1);
-		display: flex;
-		align-items: center;
-		gap: 2px;
-	}
-
-	@media (min-width: 575px) {
-		.container {
-			max-width: var(--max-width-1);
-			padding: 0 var(--space-4);
-		}
-
-		main {
-			margin-top: unset;
-		}
-
-		.header {
-			position: unset;
-			border-bottom: none;
-			margin: var(--space-3) 0;
-			padding: var(--space-2) 0;
-			background: unset;
-		}
-
-		.header .header__title {
-			margin: var(--space-3) 0 var(--space-2);
-			font-size: var(--font-size-5);
-		}
-
-		.footer {
-			margin: var(--space-3) 0;
-		}
-	}
-
-	.preview-toggle {
-		backdrop-filter: blur(12px);
-		border-radius: 0.25rem;
-		bottom: 1rem;
-		box-shadow:
-			0 10px 15px -3px rgba(0, 0, 0, 0.1),
-			0 4px 6px -2px rgba(0, 0, 0, 0.05);
-		color: #1f2937;
-		display: block;
-		font-size: 0.75rem;
-		font-weight: 500;
-		line-height: 1rem;
-		padding-bottom: 0.5rem;
-		padding-left: 0.75rem;
-		padding-right: 0.75rem;
-		padding-top: 0.5rem;
-		position: fixed;
-		right: 1rem;
-		text-align: center;
-		text-decoration: none;
-		z-index: 50;
-	}
-
-	.preview-toggle:hover {
-		background-color: #ef4444;
-		color: #ffffff;
-	}
-
-	.preview-toggle span:first-child {
-		display: block;
-	}
-	.preview-toggle:hover span:first-child {
-		display: none;
-	}
-
-	.preview-toggle span:last-child {
-		display: none;
-	}
-	.preview-toggle:hover span:last-child {
-		display: block;
-	}
-</style>
+<footer>
+	<div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+		<nav class="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6" aria-label="Footer">
+			<a href="/" class="text-gray-400 hover:text-white">Home</a>
+		</nav>
+		<div class="mt-16 flex justify-center gap-x-10">
+			<a href="/" class="text-gray-400 hover:text-gray-300">
+				<span class="sr-only">Facebook</span>
+				<svg class="size-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+					<path
+						fill-rule="evenodd"
+						d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+						clip-rule="evenodd"
+					/>
+				</svg>
+			</a>
+		</div>
+		<p class="mt-10 text-center text-sm/6 text-gray-400">&copy; 2024 Charity Singers</p>
+	</div>
+</footer>
