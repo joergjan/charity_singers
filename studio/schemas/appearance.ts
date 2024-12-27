@@ -1,35 +1,32 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'blog',
-  title: 'Blog Eintrag',
+  name: 'appearance',
+  title: 'Auftritte',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Grund für Auftritt',
       type: 'string',
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'location',
+      title: 'Ort',
+      type: 'string',
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
+      name: 'date',
+      title: 'Datum',
+      type: 'date',
     }),
   ],
   preview: {
     select: {
-      title: 'title',
+      place: 'place',
+      date: 'date',
       author: 'author.name',
-      media: 'mainImage',
-      body: 'body',
+      title: 'title',
     },
     prepare(selection) {
       const {author} = selection

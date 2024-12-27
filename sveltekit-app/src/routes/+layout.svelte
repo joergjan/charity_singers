@@ -3,7 +3,7 @@
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
-	import { fly, fade } from 'svelte/transition';
+	import { navItems } from '$lib/navbar';
 
 	let menu: boolean = false;
 
@@ -37,7 +37,9 @@
 				</div>
 				<div class="hidden sm:ml-6 sm:block">
 					<div class="flex space-x-4">
-						<a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-white">Home</a>
+						{#each navItems as { name, href }}
+							<a {href} class="rounded-md px-3 py-2 text-sm font-medium text-white">{name}</a>
+						{/each}
 					</div>
 				</div>
 			</div>
@@ -103,7 +105,9 @@
 <footer>
 	<div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
 		<nav class="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6" aria-label="Footer">
-			<a href="/" class="text-gray-400 hover:text-white">Home</a>
+			{#each navItems as { name, href }}
+				<a {href} class="text-gray-400 hover:text-white">{name}</a>
+			{/each}
 		</nav>
 		<div class="mt-16 flex justify-center gap-x-10">
 			<a href="/" class="text-gray-400 hover:text-gray-300">

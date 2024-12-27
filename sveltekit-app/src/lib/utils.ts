@@ -55,8 +55,8 @@ export const flyAndScale = (
 	};
 };
 
-export function formatDate(date: string) {
-	return new Date(date).toLocaleDateString('en-US', {
+export function formatDate(date: Date) {
+	return new Date(date).toLocaleDateString('de-CH', {
 		month: 'long',
 		day: 'numeric',
 		year: 'numeric'
