@@ -10,7 +10,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
-		"lint": "prettier --check ."
+		"lint": "prettier --check .",
+		 "setup": "node ./contentful/setup.js"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -24,6 +25,12 @@
 		"svelte-check": "^4.0.0",
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",
-		"vite": "^5.4.11"
+		"vite": "^5.4.11",
+		"contentful-import": "^9.4.76"
+	},
+	"dependencies": {
+		
+		"@contentful/rich-text-html-renderer": "^16.3.0"
+
 	}
 }
