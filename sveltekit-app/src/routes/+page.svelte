@@ -20,8 +20,6 @@
 	$: ({ data: about } = $aboutQuery);
 	$: ({ data: homeImage } = $homeImageQuery);
 	$: ({ data: blogPosts } = $recentBlogPostsQuery);
-
-	$: about && console.log(about);
 </script>
 
 <div class="space-y-10">
