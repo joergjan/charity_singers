@@ -23,6 +23,7 @@ export default defineType({
     select: {
       author: 'author.name',
       media: 'mainImage',
+      title: 'title',
     },
     prepare(selection) {
       const {author} = selection
