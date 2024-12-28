@@ -4,10 +4,6 @@ export const navItems = [
 		href: '/'
 	},
 	{
-		name: 'Aktuelles',
-		href: '/news'
-	},
-	{
 		name: 'Auftritte',
 		href: '/appearances'
 	},

@@ -1,16 +1,33 @@
-import { upcomingAppearancesQuery, imagesQuery } from '$lib/sanity/queries';
+import {
+	upcomingAppearancesQuery,
+	homeImageQuery,
+	recentBlogPostsQuery
+} from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
 
-	const appearances = await loadQuery<Appearance[]>(upcomingAppearancesQuery);
-	const images = await loadQuery<Image[]>(imagesQuery);
+	// Fetch multiple queries concurrently
+	const [appearances, blogPosts, homeImage] = await Promise.all([
+		loadQuery<Appearance[]>(upcomingAppearancesQuery),
+		loadQuery<BlogPost[]>(recentBlogPostsQuery),
+		loadQuery<Home[]>(homeImageQuery)
+	]);
 
-	// We pass the data in a format that is easy for `useQuery` to consume in the
-	// corresponding `+page.svelte` file, but you can return the data in any
-	// format you like.
+	// Return the data separately for each query
 	return {
-		options: { appearances: appearances, images: images }
+		upcomingAppearancesQuery,
+		homeImageQuery,
+		recentBlogPostsQuery,
+		appearances: {
+			options: { initial: appearances }
+		},
+		homeImage: {
+			options: { initial: homeImage }
+		},
+		blogPosts: {
+			options: { initial: blogPosts }
+		}
 	};
 };

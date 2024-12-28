@@ -10,13 +10,13 @@
 <div class="">
 	<div class="mx-auto max-w-7xl">
 		<div class="py-10">
-			<div class="px-4 sm:px-6 lg:px-8">
+			<div class="">
 				{#if appearances.length}
 					<div class="sm:flex sm:items-center">
 						<div class="sm:flex-auto">
-							<h1 class="text-base font-semibold text-white">Auftritte</h1>
+							<h1>Auftritte</h1>
 
-							{#if appearances.length > 3 && $page.url.pathname.includes('appearances')}
+							{#if $page.url.pathname.includes('appearances')}
 								<p class="mt-2 text-sm text-gray-300">
 									Alle unsere anstehenden Auftritte auf einen Blick.
 								</p>
@@ -62,7 +62,7 @@
 						Momentan haben wir keine anstehenden Auftritte
 					</div>
 				{/if}
-				{#if appearances.length >= 3 && !$page.url.pathname.includes('appearances')}
+				{#if !$page.url.pathname.includes('appearances')}
 					<div class="flex items-center justify-center pt-7">
 						<Button href="/appearances">
 							<p class="pr-2">Alle Auftritte</p>
