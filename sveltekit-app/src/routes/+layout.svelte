@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
-
+	import { onMount } from 'svelte';
 	import { navItems } from '$lib/navbar';
 	import Logo from '$lib/components/Logo.svelte';
 	import { dev } from '$app/environment';
@@ -11,10 +11,15 @@
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	let menu: boolean = false;
+	let isMobile: boolean = false;
 
 	function toggleMenu() {
 		menu = !menu;
 	}
+
+	onMount(() => {
+		isMobile = window.innerWidth <= 768;
+	});
 </script>
 
 <svelte:head>
@@ -22,21 +27,21 @@
 </svelte:head>
 
 <nav>
-	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+	<div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
 			<div class="flex items-center">
-				<div class="group flex shrink-0 sm:pt-2">
+				<div class="group flex shrink-0 md:pt-2">
 					<a href="/">
 						{#key $page.url.pathname}
 							<Music
-								class="${$page.url.pathname === '/'
+								class="${$page.url.pathname === '/' || isMobile
 									? ' text-red-500'
 									: 'transition-all hover:transition-all  hover:duration-[400ms] group-hover:text-red-500'}"
 							/>
 						{/key}
 					</a>
 				</div>
-				<div class="hidden sm:ml-6 sm:flex">
+				<div class="hidden md:ml-6 md:flex">
 					<ul class="flex place-items-end items-end justify-end justify-items-end space-x-10">
 						{#each navItems as { name, href }, i}
 							<li
@@ -68,9 +73,9 @@
 					</ul>
 				</div>
 			</div>
-			<div class="block sm:ml-6 sm:hidden">
+			<div class="block md:ml-6 md:hidden">
 				<div class="flex items-center">
-					<div class="-mr-2 flex sm:hidden">
+					<div class="-mr-2 flex md:hidden">
 						<!-- Mobile menu button -->
 						<button
 							type="button"
@@ -106,7 +111,7 @@
 			</div>
 		</div>
 		{#if menu}
-			<div class="sm:hidden" id="mobile-menu">
+			<div class="md:hidden" id="mobile-menu">
 				<div class="space-y-1 px-2 pb-3 pt-2">
 					{#each navItems as { name, href }}
 						<a
@@ -128,7 +133,7 @@
 </main>
 
 <footer>
-	<div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
+	<div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 md:py-24 lg:px-8">
 		<nav class="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6" aria-label="Footer">
 			{#each navItems as { name, href }}
 				<a {href} class="text-gray-400 hover:text-white">{name}</a>
