@@ -5,7 +5,7 @@ export const navItems = [
 	},
 
 	{
-		name: 'Gallerie',
+		name: 'Galerie',
 		href: '/gallery'
 	},
 	{
