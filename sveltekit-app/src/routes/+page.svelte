@@ -1,25 +1,12 @@
 <script lang="ts">
-	import { useQuery } from '@sanity/svelte-loader';
-	import type { PageData } from './$types'; // Assuming you have this type
+	import type { PageData } from './$types';
 	import AppearancesTable from '$lib/components/AppearancesTable.svelte';
 	import Image from '$lib/components/Image.svelte';
 	import Blog from '$lib/components/Blog.svelte';
 	import About from '$lib/components/About.svelte';
 
-	// Receive the data passed from load function
 	export let data: PageData;
-
-	// Initialize useQuery for each query separately
-	const appearancesQuery = useQuery(data.appearances); // Query for appearances
-	const homeImageQuery = useQuery(data.homeImage);
-	const recentBlogPostsQuery = useQuery(data.blogPosts);
-	const aboutQuery = useQuery(data.about);
-
-	// Destructure the data for each query
-	$: ({ data: appearances } = $appearancesQuery);
-	$: ({ data: about } = $aboutQuery);
-	$: ({ data: homeImage } = $homeImageQuery);
-	$: ({ data: blogPosts } = $recentBlogPostsQuery);
+	$: ({ blogPosts, about, appearances, homeImage } = data);
 </script>
 
 <div class="space-y-10">

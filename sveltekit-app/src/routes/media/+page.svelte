@@ -1,12 +1,9 @@
 <script lang="ts">
-	import { useQuery } from '@sanity/svelte-loader';
-
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	const q = useQuery(data);
 
-	$: ({ data: videos } = $q);
+	$: ({ videos } = data);
 </script>
 
 {#if videos.length}

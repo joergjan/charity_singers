@@ -4,36 +4,22 @@ import {
 	recentBlogPostsQuery,
 	aboutQuery
 } from '$lib/sanity/queries';
+import { client } from '$lib/sanity/client';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	const { loadQuery } = event.locals;
-
-	// Fetch multiple queries concurrently
-	const [appearances, blogPosts, homeImage, about] = await Promise.all([
-		loadQuery<Appearance[]>(upcomingAppearancesQuery),
-		loadQuery<BlogPost[]>(recentBlogPostsQuery),
-		loadQuery<Home[]>(homeImageQuery),
-		loadQuery<About[]>(aboutQuery)
+	const [appearances, homeImage, blogPosts, about] = await Promise.all([
+		client.fetch(upcomingAppearancesQuery),
+		client.fetch(homeImageQuery),
+		client.fetch(recentBlogPostsQuery),
+		client.fetch(aboutQuery)
 	]);
 
 	// Return the data separately for each query
 	return {
-		upcomingAppearancesQuery,
-		homeImageQuery,
-		recentBlogPostsQuery,
-		aboutQuery,
-		appearances: {
-			options: { initial: appearances }
-		},
-		homeImage: {
-			options: { initial: homeImage }
-		},
-		blogPosts: {
-			options: { initial: blogPosts }
-		},
-		about: {
-			options: { initial: about }
-		}
+		appearances,
+		homeImage,
+		blogPosts,
+		about
 	};
 };

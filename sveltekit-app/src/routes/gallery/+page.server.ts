@@ -1,16 +1,11 @@
-import { imagesQuery as query, type Image } from '$lib/sanity/queries';
+import { imagesQuery } from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
+import { client } from '$lib/sanity/client';
 
 export const load: PageServerLoad = async (event) => {
-	const { loadQuery } = event.locals;
-	const initial = await loadQuery<Image[]>(query);
-
-	// We pass the data in a format that is easy for `useQuery` to consume in the
-	// corresponding `+page.svelte` file, but you can return the data in any
-	// format you like.
+	const images = await client.fetch(imagesQuery);
 
 	return {
-		query,
-		options: { initial }
+		images
 	};
 };

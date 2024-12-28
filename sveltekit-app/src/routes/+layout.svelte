@@ -1,8 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/stores';
-	import LiveMode from '../components/LiveMode.svelte';
+
 	import { navItems } from '$lib/navbar';
 	import Logo from '$lib/components/Logo.svelte';
 	import { dev } from '$app/environment';
@@ -18,21 +17,9 @@
 	}
 </script>
 
-{#if $isPreviewing}
-	<a href={`/preview/disable?redirect=${$page.url.pathname}`} class="preview-toggle">
-		<span>Preview Enabled</span>
-		<span>Disable Preview</span>
-	</a>
-{/if}
-
 <svelte:head>
 	<title>Charity Singers</title>
 </svelte:head>
-
-{#if $isPreviewing}
-	<VisualEditing />
-	<LiveMode />
-{/if}
 
 <nav>
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
