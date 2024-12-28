@@ -96,7 +96,7 @@
 <!-- this is the gallery -->
 
 {#if photos.length != 0}
-	<ul class="grid-rows-auto grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+	<ul class="grid-rows-auto grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 		{#each photos.slice(0, showMore ? photos.length : amount > 0 ? amount : photos.length) as photo, no}
 			<li class="relative h-auto transition-all duration-300 hover:scale-[1.03] hover:shadow-lg">
 				<button

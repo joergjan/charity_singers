@@ -8,12 +8,17 @@ export const navItems = [
 		href: '/appearances'
 	},
 	{
+		name: 'Blog',
+		href: '/blog'
+	},
+	{
 		name: 'Gallerie',
 		href: '/gallery'
 	},
+
 	{
-		name: 'Blog',
-		href: '/blog'
+		name: 'Aufnahmen',
+		href: '/media'
 	},
 	{
 		name: 'Kontakt',

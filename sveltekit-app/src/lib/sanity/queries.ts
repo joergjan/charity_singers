@@ -12,6 +12,11 @@ export const homeImageQuery = groq`*[_type == "home"] | order(_createdAt desc)`;
 export const blogPostsQuery = groq`*[_type == "blogPost"] | order(date desc)`;
 export const recentBlogPostsQuery = groq`*[_type == "blogPost"] | order(date desc) [0..1]`;
 
+export const videosQuery = groq`*[_type == "video"]{
+	title,
+	"url": video.asset->url
+  } | order(_createdAt desc)`;
+
 export interface Appearance {
 	_type: 'appearance';
 	_createdAt: string;
@@ -41,4 +46,11 @@ export interface BlogPost {
 	date: Date;
 	mainImage: ImageAsset;
 	body: PortableTextBlock[];
+}
+
+export interface Video {
+	_type: 'video';
+	_createdAt: string;
+	title: string;
+	video: File;
 }

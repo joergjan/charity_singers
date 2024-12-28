@@ -25,7 +25,7 @@
 {:else}
 	<img
 		in:fade
-		class="h-48 w-full rounded-md object-cover object-center shadow-md"
+		class="h-60 w-full rounded-md object-cover object-center shadow-md"
 		{src}
 		srcset="{src} 480w, {src} 800w"
 		sizes="(max-width: 600px) 480px, 800px"
