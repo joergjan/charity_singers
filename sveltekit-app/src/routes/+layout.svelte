@@ -24,6 +24,10 @@
 
 <svelte:head>
 	<title>Charity Singers</title>
+	<meta
+		name="description"
+		content="Vor 20 Jahren gründete der damalige Pfarrer Andreas Manig eine Gesangsgruppe, die bis heute mit veränderten Mitgliedern Bestand hat. Sie singen vorab Gospellieder, aber auch Gesänge aus anderen Sparten. Zuweilen bereichern sie Gottesdienste oder machen eigene Konzerte für einen guten Zweck."
+	/>
 </svelte:head>
 
 <nav>
