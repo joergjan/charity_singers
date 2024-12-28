@@ -5,7 +5,11 @@
 	import LiveMode from '../components/LiveMode.svelte';
 	import { navItems } from '$lib/navbar';
 	import Logo from '$lib/components/Logo.svelte';
+	import { dev } from '$app/environment';
 	import { Music } from 'lucide-svelte';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	let menu: boolean = false;
 
