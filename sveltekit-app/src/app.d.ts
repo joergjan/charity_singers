@@ -1,5 +1,5 @@
 import type { LoaderLocals } from '@sanity/svelte-loader';
-import { Appearance, News, BlogPost, Image, Home, Video } from '$lib/sanity/queries';
+import { Appearance, News, BlogPost, Image, Home, Video, About } from '$lib/sanity/queries';
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -12,6 +12,7 @@ declare global {
 	type Image = Image;
 	type Home = Home;
 	type Video = Video;
+	type About = About;
 }
 
 export {};

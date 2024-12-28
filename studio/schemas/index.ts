@@ -5,5 +5,6 @@ import image from './image'
 import appearance from './appearance'
 import home from './home'
 import video from './video'
+import about from './about'
 
-export const schemaTypes = [blogPost, blockContent, image, appearance, home, video]
+export const schemaTypes = [blogPost, blockContent, image, appearance, home, video, about]

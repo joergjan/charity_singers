@@ -3,18 +3,18 @@ export const navItems = [
 		name: 'Auftritte',
 		href: '/appearances'
 	},
-	{
-		name: 'Blog',
-		href: '/blog'
-	},
+
 	{
 		name: 'Gallerie',
 		href: '/gallery'
 	},
-
 	{
-		name: 'Aufnahmen',
+		name: 'Videos',
 		href: '/media'
+	},
+	{
+		name: 'Blog',
+		href: '/blog'
 	},
 	{
 		name: 'Kontakt',

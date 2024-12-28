@@ -1,7 +1,8 @@
 import {
 	upcomingAppearancesQuery,
 	homeImageQuery,
-	recentBlogPostsQuery
+	recentBlogPostsQuery,
+	aboutQuery
 } from '$lib/sanity/queries';
 import type { PageServerLoad } from './$types';
 
@@ -9,10 +10,11 @@ export const load: PageServerLoad = async (event) => {
 	const { loadQuery } = event.locals;
 
 	// Fetch multiple queries concurrently
-	const [appearances, blogPosts, homeImage] = await Promise.all([
+	const [appearances, blogPosts, homeImage, about] = await Promise.all([
 		loadQuery<Appearance[]>(upcomingAppearancesQuery),
 		loadQuery<BlogPost[]>(recentBlogPostsQuery),
-		loadQuery<Home[]>(homeImageQuery)
+		loadQuery<Home[]>(homeImageQuery),
+		loadQuery<About[]>(aboutQuery)
 	]);
 
 	// Return the data separately for each query
@@ -20,6 +22,7 @@ export const load: PageServerLoad = async (event) => {
 		upcomingAppearancesQuery,
 		homeImageQuery,
 		recentBlogPostsQuery,
+		aboutQuery,
 		appearances: {
 			options: { initial: appearances }
 		},
@@ -28,6 +31,9 @@ export const load: PageServerLoad = async (event) => {
 		},
 		blogPosts: {
 			options: { initial: blogPosts }
+		},
+		about: {
+			options: { initial: about }
 		}
 	};
 };

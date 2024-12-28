@@ -12,6 +12,8 @@ export const homeImageQuery = groq`*[_type == "home"] | order(_createdAt desc)`;
 export const blogPostsQuery = groq`*[_type == "blogPost"] | order(date desc)`;
 export const recentBlogPostsQuery = groq`*[_type == "blogPost"] | order(date desc) [0..1]`;
 
+export const aboutQuery = groq`*[_type == "about"][0]`;
+
 export const videosQuery = groq`*[_type == "video"]{
 	title,
 	"url": video.asset->url
@@ -53,4 +55,11 @@ export interface Video {
 	_createdAt: string;
 	title: string;
 	video: File;
+}
+
+export interface About {
+	_type: 'about';
+	_createdAt: string;
+	title: string;
+	body: PortableTextBlock[];
 }
