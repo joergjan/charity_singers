@@ -10,7 +10,6 @@ export const load: PageServerLoad = async (event) => {
 	// format you like.
 
 	return {
-		query,
 		options: { initial }
 	};
 };

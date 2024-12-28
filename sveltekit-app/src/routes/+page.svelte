@@ -1,18 +1,14 @@
 <script lang="ts">
 	import { useQuery } from '@sanity/svelte-loader';
-	import Card from '../components/Card.svelte';
 	import type { PageData } from './$types';
+	import AppearancesTable from '$lib/components/ui/AppearancesTable.svelte';
 
 	export let data: PageData;
 	const q = useQuery(data);
 
-	$: ({ data: posts } = $q);
+	$: data && console.log(data);
+
+	$: ({ data: appearances } = $q);
 </script>
 
-<section>
-	{#if posts.length}
-		{#each posts as post}
-			<Card {post} />
-		{/each}
-	{/if}
-</section>
+<AppearancesTable {appearances} />
