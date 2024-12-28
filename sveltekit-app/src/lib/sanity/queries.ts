@@ -19,6 +19,8 @@ export const videosQuery = groq`*[_type == "video"]{
 	"url": video.asset->url
   } | order(_createdAt desc)`;
 
+export const contactQuery = groq`*[_type == "contact"][0]`;
+
 export interface Appearance {
 	_type: 'appearance';
 	_createdAt: string;
@@ -47,7 +49,7 @@ export interface BlogPost {
 	title: string;
 	date: Date;
 	mainImage: ImageAsset;
-	body: PortableTextBlock[];
+	body: string;
 }
 
 export interface Video {
@@ -61,5 +63,16 @@ export interface About {
 	_type: 'about';
 	_createdAt: string;
 	title: string;
-	body: PortableTextBlock[];
+	body: string;
+}
+
+export interface Contact {
+	_type: 'contact';
+	_createdAt: string;
+	street: string;
+	postcode: number;
+	place: string;
+	mail: string;
+	firstname: string;
+	lastname: string;
 }
