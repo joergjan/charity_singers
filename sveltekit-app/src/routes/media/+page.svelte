@@ -7,8 +7,6 @@
 	const q = useQuery(data);
 
 	$: ({ data: videos } = $q);
-
-	$: data && console.log(data);
 </script>
 
 {#if videos.length}
