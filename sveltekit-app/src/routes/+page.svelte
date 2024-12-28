@@ -19,12 +19,12 @@
 	$: ({ data: blogPosts } = $recentBlogPostsQuery);
 </script>
 
-<div class="mt-16 lg:mt-20"></div>
+<div class="space-y-10">
+	<div class="hidden items-center justify-center rounded-lg object-fill md:flex">
+		<Image image={homeImage[0]} imageClass={''} />
+	</div>
 
-<div class="hidden items-center justify-center rounded-lg object-fill md:flex">
-	<Image image={homeImage[0]} imageClass={''} />
+	<Blog {blogPosts} />
+
+	<AppearancesTable {appearances} />
 </div>
-
-<Blog {blogPosts} />
-
-<AppearancesTable {appearances} />
