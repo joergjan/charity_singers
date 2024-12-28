@@ -9,7 +9,7 @@
 
 <div class="">
 	<div class="mx-auto max-w-7xl">
-		<div class="py-10">
+		<div class="mt-16 lg:mt-20">
 			<div class="">
 				{#if appearances.length}
 					<div class="sm:flex sm:items-center">

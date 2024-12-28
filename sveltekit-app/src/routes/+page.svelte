@@ -19,7 +19,9 @@
 	$: ({ data: blogPosts } = $recentBlogPostsQuery);
 </script>
 
-<div class="flex items-center justify-center rounded-lg object-fill">
+<div class="mt-16 lg:mt-20"></div>
+
+<div class="hidden items-center justify-center rounded-lg object-fill md:flex">
 	<Image image={homeImage[0]} imageClass={''} />
 </div>
 

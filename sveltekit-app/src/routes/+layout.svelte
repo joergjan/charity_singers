@@ -4,6 +4,8 @@
 	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
 	import { navItems } from '$lib/navbar';
+	import Logo from '$lib/components/Logo.svelte';
+	import { Music } from 'lucide-svelte';
 
 	let menu: boolean = false;
 
@@ -19,6 +21,10 @@
 	</a>
 {/if}
 
+<svelte:head>
+	<title>Charity Singers</title>
+</svelte:head>
+
 {#if $isPreviewing}
 	<VisualEditing />
 	<LiveMode />
@@ -28,19 +34,47 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
 			<div class="flex items-center">
-				<div class="shrink-0">
-					<img
-						class="h-8 w-auto"
-						src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=500"
-						alt="Your Company"
-					/>
+				<div class="group flex shrink-0 sm:pt-2">
+					<a href="/">
+						{#key $page.url.pathname}
+							<Music
+								class="${$page.url.pathname === '/'
+									? ' text-red-500'
+									: 'transition-all hover:transition-all  hover:duration-[400ms] group-hover:text-red-500'}"
+							/>
+						{/key}
+					</a>
 				</div>
-				<div class="hidden sm:ml-6 sm:block">
-					<div class="flex space-x-4">
-						{#each navItems as { name, href }}
-							<a {href} class="rounded-md px-3 py-2 text-sm font-medium text-white">{name}</a>
+				<div class="hidden sm:ml-6 sm:flex">
+					<ul class="flex place-items-end items-end justify-end justify-items-end space-x-10">
+						{#each navItems as { name, href }, i}
+							<li
+								class="${$page.url.pathname === href
+									? ' text-red-500 '
+									: ' hover:text-red-500 hover:transition-all hover:duration-[400ms]'} inline-flex items-center px-1 pt-1"
+							>
+								<button class="group relative">
+									<a
+										id={$page.url.pathname === href ? '' : 'menuItem'}
+										{href}
+										class="rounded-md px-3 py-2 text-sm font-medium"
+									>
+										{name}
+
+										<div
+											class={$page.url.pathname === href
+												? 'absolute -right-5 -top-4 scale-125'
+												: 'absolute -right-5 -top-4 rotate-[10deg] transition duration-300 group-hover:rotate-[0deg] group-hover:scale-125'}
+										>
+											<div id="logo">
+												<Logo className="h-14" fill="url(#gradient)" />
+											</div>
+										</div>
+									</a>
+								</button>
+							</li>
 						{/each}
-					</div>
+					</ul>
 				</div>
 			</div>
 			<div class="block sm:ml-6 sm:hidden">
@@ -83,15 +117,15 @@
 		{#if menu}
 			<div class="sm:hidden" id="mobile-menu">
 				<div class="space-y-1 px-2 pb-3 pt-2">
-					<a
-						href="/"
-						class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">Home</a
-					>
-					<a
-						href="#"
-						class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-						>Team</a
-					>
+					{#each navItems as { name, href }}
+						<a
+							{href}
+							class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+							on:click={toggleMenu}
+						>
+							{name}
+						</a>
+					{/each}
 				</div>
 			</div>
 		{/if}
@@ -113,3 +147,18 @@
 		<p class="mt-10 text-center text-sm/6 text-gray-400">&copy; 2024 Charity Singers</p>
 	</div>
 </footer>
+
+<style>
+	#menuItem #logo {
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	#menuItem:hover #logo {
+		opacity: 1;
+	}
+
+	svg {
+		transition: transform 0.3s ease;
+	}
+</style>

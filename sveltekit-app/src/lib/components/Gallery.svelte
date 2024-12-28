@@ -93,8 +93,7 @@
 	}
 </script>
 
-<!-- this is the gallery -->
-
+<div class="mt-16 lg:mt-20"></div>
 {#if photos.length != 0}
 	<ul class="grid-rows-auto grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 		{#each photos.slice(0, showMore ? photos.length : amount > 0 ? amount : photos.length) as photo, no}
