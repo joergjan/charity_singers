@@ -3,9 +3,9 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { navItems } from '$lib/navbar';
+	import Note from '$lib/components/Note.svelte';
 	import Logo from '$lib/components/Logo.svelte';
 	import { dev } from '$app/environment';
-	import { LogsIcon, Music } from 'lucide-svelte';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
@@ -33,50 +33,52 @@
 <nav>
 	<div class="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
 		<div class="flex h-16 items-center justify-between">
-			<div class="flex items-center">
-				<div class="group flex shrink-0 md:pt-2">
-					<a href="/">
-						{#key $page.url.pathname}
-							<Music
-								class="${$page.url.pathname === '/' || isMobile
-									? ' text-red-500'
-									: 'transition-all hover:transition-all  hover:duration-[400ms] group-hover:text-red-500'}"
-							/>
-						{/key}
-					</a>
-				</div>
-				<div class="hidden md:ml-6 md:flex">
-					<ul class="flex place-items-end items-end justify-end justify-items-end space-x-10">
-						{#each navItems as { name, href }, i}
-							<li
-								class="${$page.url.pathname === href
-									? ' text-red-500 '
-									: ' hover:text-red-500 hover:transition-all hover:duration-[400ms]'} inline-flex items-center px-1 pt-1"
-							>
-								<button class="group relative">
-									<a
-										id={$page.url.pathname === href ? '' : 'menuItem'}
-										{href}
-										class="rounded-md px-3 py-2 text-sm font-medium"
-									>
-										{name}
-
-										<div
-											class={$page.url.pathname === href
-												? 'absolute -right-5 -top-4 scale-125'
-												: 'absolute -right-5 -top-4 rotate-[10deg] transition duration-300 group-hover:rotate-[0deg] group-hover:scale-125'}
-										>
-											<div id="logo">
-												<Logo className="h-14" fill="url(#gradient)" />
-											</div>
-										</div>
-									</a>
-								</button>
-							</li>
-						{/each}
-					</ul>
-				</div>
+			<div class="group flex shrink-0 md:pt-2">
+				<a href="/">
+					{#key $page.url.pathname}
+						<Logo
+							className="${$page.url.pathname === '/' || isMobile
+								? ' fill-red-500 '
+								: 'transition-all hover:transition-all fill-white hover:duration-[400ms] group-hover:fill-red-500'}"
+							strokeStyle="${$page.url.pathname === '/' || isMobile
+								? ' stroke-red-500 fill-none '
+								: ' transition-all group-hover:stroke-red-500 fill-none hover:transition-all stroke-white hover:duration-[400ms]'}"
+						/>
+					{/key}
+				</a>
 			</div>
+			<div class="ml-auto hidden justify-items-end md:flex">
+				<ul class="flex space-x-10">
+					{#each navItems as { name, href }, i}
+						<li
+							class="${$page.url.pathname === href
+								? ' text-red-500 '
+								: ' hover:text-red-500 hover:transition-all hover:duration-[400ms]'} inline-flex items-center px-1 pt-1"
+						>
+							<button class="group relative">
+								<a
+									id={$page.url.pathname === href ? '' : 'menuItem'}
+									{href}
+									class="rounded-md px-3 py-2 text-sm font-medium"
+								>
+									{name}
+
+									<div
+										class={$page.url.pathname === href
+											? 'absolute -right-5 -top-4 scale-125'
+											: 'absolute -right-5 -top-4 rotate-[10deg] transition duration-300 group-hover:rotate-[0deg] group-hover:scale-125'}
+									>
+										<div id="Note">
+											<Note className="h-14" fill="url(#gradient)" />
+										</div>
+									</div>
+								</a>
+							</button>
+						</li>
+					{/each}
+				</ul>
+			</div>
+
 			<div class="block md:ml-6 md:hidden">
 				<div class="flex items-center">
 					<div class="-mr-2 flex md:hidden">
@@ -153,12 +155,12 @@
 </footer>
 
 <style>
-	#menuItem #logo {
+	#menuItem #Note {
 		opacity: 0;
 		transition: opacity 0.3s ease;
 	}
 
-	#menuItem:hover #logo {
+	#menuItem:hover #Note {
 		opacity: 1;
 	}
 
