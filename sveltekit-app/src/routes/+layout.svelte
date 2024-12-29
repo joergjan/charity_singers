@@ -148,6 +148,7 @@
 <footer>
 	<div class="mx-auto max-w-7xl overflow-hidden px-6 py-20 md:py-24 lg:px-8">
 		<nav class="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm/6" aria-label="Footer">
+			<a href="/" class="text-gray-400 hover:text-white">Home</a>
 			{#each navItems as { name, href }}
 				<a {href} class="text-gray-400 hover:text-white">{name}</a>
 			{/each}
