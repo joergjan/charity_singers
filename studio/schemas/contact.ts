@@ -40,7 +40,7 @@ export default defineType({
     select: {
       date: 'date',
       author: 'author.name',
-      mail: 'mail',
+      title: 'mail',
     },
     prepare(selection) {
       const {author} = selection
