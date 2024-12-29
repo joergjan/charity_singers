@@ -119,6 +119,13 @@
 		{#if menu}
 			<div class="md:hidden" id="mobile-menu">
 				<div class="space-y-1 px-2 pb-3 pt-2">
+					<a
+						href="/"
+						class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+						on:click={toggleMenu}
+					>
+						Home
+					</a>
 					{#each navItems as { name, href }}
 						<a
 							{href}
