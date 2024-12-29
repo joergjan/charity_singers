@@ -10,7 +10,7 @@
 </script>
 
 <div class="space-y-10">
-	<div class="hidden items-center justify-center rounded-lg object-fill md:flex">
+	<div class=" items-center justify-center rounded-lg object-fill flex">
 		<Image image={homeImage[0]} imageClass={''} />
 	</div>
 
