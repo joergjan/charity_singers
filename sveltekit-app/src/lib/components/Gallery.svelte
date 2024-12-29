@@ -107,7 +107,11 @@
 				<span class="sr-only">View image {no + 1}</span>
 
 				<div>
-					<GaleryImage src={urlFor(photo.mainImage).url()} {dark} alt={photo.title} />
+					<GaleryImage
+						src={photo.mainImage ? urlFor(photo.mainImage).url() : ''}
+						{dark}
+						alt={photo.title}
+					/>
 				</div>
 			</li>
 		{/each}
@@ -165,7 +169,7 @@
 			></button>
 			<div class="absolute inset-0 flex items-center justify-center">
 				<LightboxImage
-					src={urlFor(photos[activeIndex].mainImage).url()}
+					src={photos[activeIndex] ? urlFor(photos[activeIndex].mainImage).url() : '/favicon.png'}
 					{dark}
 					alt={photos[activeIndex].title}
 					title={photos[activeIndex].title}

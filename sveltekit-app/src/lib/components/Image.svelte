@@ -5,4 +5,8 @@
 	export let imageClass = '';
 </script>
 
-<img class="rounded-lg ${imageClass}" src={urlFor(image.mainImage).url()} alt={image.title} />
+<img
+	class="${image.mainImage ? '' : ' bg-gray-800 '} rounded-lg ${imageClass}"
+	src={image.mainImage ? urlFor(image.mainImage).url() : ''}
+	alt={image.title}
+/>
