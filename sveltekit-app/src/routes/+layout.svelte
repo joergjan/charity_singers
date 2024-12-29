@@ -5,7 +5,7 @@
 	import { navItems } from '$lib/navbar';
 	import Logo from '$lib/components/Logo.svelte';
 	import { dev } from '$app/environment';
-	import { Music } from 'lucide-svelte';
+	import { LogsIcon, Music } from 'lucide-svelte';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
@@ -145,6 +145,10 @@
 		</nav>
 
 		<p class="mt-10 text-center text-sm/6 text-gray-400">&copy; 2024 Charity Singers</p>
+
+		<p class="mt-10 text-center text-sm/6 text-gray-400 hover:text-gray-300">
+			<a href="https://studio.charity-singers.ch" target="_blank" class="underline"> Login </a>
+		</p>
 	</div>
 </footer>
 
