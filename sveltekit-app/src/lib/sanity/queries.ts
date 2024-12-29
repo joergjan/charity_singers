@@ -14,6 +14,8 @@ export const recentBlogPostsQuery = groq`*[_type == "blogPost"] | order(date des
 
 export const aboutQuery = groq`*[_type == "about"][0]`;
 
+export const youtubeQuery = groq`*[_type == "youtube"]`;
+
 export const videosQuery = groq`*[_type == "video"]{
 	title,
 	"url": video.asset->url
@@ -75,4 +77,11 @@ export interface Contact {
 	mail: string;
 	firstname: string;
 	lastname: string;
+}
+
+export interface Youtube {
+	_type: 'youtube';
+	_createdAt: string;
+	title: string;
+	link: string;
 }

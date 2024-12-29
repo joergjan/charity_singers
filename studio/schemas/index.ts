@@ -7,5 +7,16 @@ import home from './home'
 import video from './video'
 import about from './about'
 import contact from './contact'
+import youtube from './youtube'
 
-export const schemaTypes = [blogPost, blockContent, image, appearance, home, video, about, contact]
+export const schemaTypes = [
+  blogPost,
+  blockContent,
+  image,
+  appearance,
+  home,
+  video,
+  about,
+  contact,
+  youtube,
+]
