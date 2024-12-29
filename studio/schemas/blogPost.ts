@@ -26,7 +26,7 @@ export default defineType({
     defineField({
       name: 'body',
       title: 'Text',
-      type: 'string',
+      type: 'text',
     }),
   ],
   preview: {
