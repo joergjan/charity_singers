@@ -4,13 +4,18 @@
 	import Image from '$lib/components/Image.svelte';
 	import Blog from '$lib/components/Blog.svelte';
 	import About from '$lib/components/About.svelte';
+	import { homeDescription } from '$lib/components/SEO';
 
 	export let data: PageData;
 	$: ({ blogPosts, about, appearances, homeImage } = data);
 </script>
 
+<svelte:head>
+	<meta name="description" content={homeDescription} />
+</svelte:head>
+
 <div class="space-y-10">
-	<div class=" items-center justify-center rounded-lg object-fill flex">
+	<div class=" flex items-center justify-center rounded-lg object-fill">
 		<Image image={homeImage[0]} imageClass={''} />
 	</div>
 

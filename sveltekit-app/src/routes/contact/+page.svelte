@@ -1,9 +1,14 @@
 <script lang="ts">
 	import type { PageData } from './$types';
+	import { contactDescription } from '$lib/components/SEO';
 
 	export let data: PageData;
 	$: ({ contact } = data);
 </script>
+
+<svelte:head>
+	<meta name="description" content={contactDescription} />
+</svelte:head>
 
 <div class="px-6 lg:px-8">
 	<div class="mx-auto max-w-2xl text-center">

@@ -1,7 +1,5 @@
 <script lang="ts">
 	export let about: About;
-
-	console.log(about);
 </script>
 
 <div class="flex w-full flex-col items-center">

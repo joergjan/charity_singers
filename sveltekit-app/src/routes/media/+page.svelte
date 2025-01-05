@@ -1,10 +1,15 @@
 <script lang="ts">
+	import { mediaDescription } from '$lib/components/SEO';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 
 	$: ({ videos, youtube } = data);
 </script>
+
+<svelte:head>
+	<meta name="description" content={mediaDescription} />
+</svelte:head>
 
 {#if youtube.length}
 	<ul role="list" class="grid grid-cols-1 gap-x-5 gap-y-8 sm:gap-x-6 lg:grid-cols-2 xl:gap-x-8">
