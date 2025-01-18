@@ -150,7 +150,9 @@
 			{/each}
 		</nav>
 
-		<p class="mt-10 text-center text-sm/6 text-gray-400">&copy; 2024 Charity Singers</p>
+		<p class="mt-10 text-center text-sm/6 text-gray-400">
+			&copy; {new Date().getFullYear()} Charity Singers
+		</p>
 
 		<p class="mt-10 text-center text-sm/6 text-gray-400 hover:text-gray-300">
 			<a href="https://studio.charity-singers.ch" target="_blank" class="underline"> Login </a>
