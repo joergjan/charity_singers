@@ -3,9 +3,13 @@
 	import AppearancesTable from '$lib/components/AppearancesTable.svelte';
 	import { appearancesDescription } from '$lib/components/SEO';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: ({ appearances } = data);
+	let { data }: Props = $props();
+
+	let { appearances } = $derived(data);
 </script>
 
 <svelte:head>

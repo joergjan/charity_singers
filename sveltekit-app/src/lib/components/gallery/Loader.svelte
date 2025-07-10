@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let dark: boolean; // dark mode
+	interface Props {
+		dark: boolean; // dark mode
+	}
+
+	let { dark }: Props = $props();
 </script>
 
 <div class="flex h-full items-center justify-center">

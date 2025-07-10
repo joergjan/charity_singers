@@ -3,8 +3,12 @@
 	import Blog from '$lib/components/Blog.svelte';
 	import { blogDescription } from '$lib/components/SEO';
 
-	export let data: PageData;
-	$: ({ blogPosts } = data);
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let { blogPosts } = $derived(data);
 </script>
 
 <svelte:head>

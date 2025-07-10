@@ -4,7 +4,11 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 
-	export let appearances: Appearance[] = [];
+	interface Props {
+		appearances?: Appearance[];
+	}
+
+	let { appearances = [] }: Props = $props();
 </script>
 
 {#if appearances.length}

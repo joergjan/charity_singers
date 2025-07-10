@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let about: About;
+	interface Props {
+		about: About;
+	}
+
+	let { about }: Props = $props();
 </script>
 
 <div class="flex w-full flex-col items-center">

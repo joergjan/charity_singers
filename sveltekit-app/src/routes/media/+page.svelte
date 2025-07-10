@@ -2,9 +2,13 @@
 	import { mediaDescription } from '$lib/components/SEO';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: ({ videos, youtube } = data);
+	let { data }: Props = $props();
+
+	let { videos, youtube } = $derived(data);
 </script>
 
 <svelte:head>
@@ -14,7 +18,7 @@
 {#if youtube.length}
 	<ul role="list" class="grid grid-cols-1 gap-x-5 gap-y-8 sm:gap-x-6 lg:grid-cols-2 xl:gap-x-8">
 		{#each youtube as { link, title }}
-			<li class="relative rounded-lg bg-white bg-opacity-5 p-3">
+			<li class="relative rounded-lg bg-white/5 p-3">
 				<h2 class="text-md pb-2 font-bold">{title}</h2>
 				<div class="aspect-w-16 aspect-h-12 group overflow-hidden rounded-lg">
 					<iframe
@@ -37,10 +41,10 @@
 {#if videos.length}
 	<ul role="list" class="grid grid-cols-1 gap-x-5 gap-y-8 sm:gap-x-6 lg:grid-cols-2 xl:gap-x-8">
 		{#each videos as { url, title }}
-			<li class="relative rounded-lg bg-white bg-opacity-5 p-3">
+			<li class="bg-opacity-5 relative rounded-lg bg-white p-3">
 				<h2 class="text-md pb-2 font-bold">{title}</h2>
 				<div class="group overflow-hidden rounded-lg">
-					<!-- svelte-ignore a11y-media-has-caption -->
+					<!-- svelte-ignore a11y_media_has_caption -->
 					<video controls>
 						<source src={url} type="video/mp4" />
 						Your browser does not support the video tag.

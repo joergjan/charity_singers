@@ -4,9 +4,13 @@
 
 	import Gallery from '$lib/components/Gallery.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	$: ({ images } = data);
+	let { data }: Props = $props();
+
+	let { images } = $derived(data);
 </script>
 
 <svelte:head>

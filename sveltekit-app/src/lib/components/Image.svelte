@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { urlFor } from '$lib/sanity/image';
 
-	export let image: Image;
-	export let imageClass = '';
+	interface Props {
+		image: Image;
+		imageClass?: string;
+	}
+
+	let { image, imageClass = '' }: Props = $props();
 </script>
 
 <img
