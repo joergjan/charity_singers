@@ -2,14 +2,10 @@ import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {presentationTool} from 'sanity/presentation'
-
 import {schemaTypes} from './schemas'
-
-const projectId = process.env.PUBLIC_CHARITY_SINGERS_SANITY_PROJECT_ID!
-const dataset = process.env.PUBLIC_CHARITY_SINGERS_SANITY_DATASET!
+import {projectId, dataset} from './env'
 
 console.log('Using projectId:', projectId)
-console.log('test')
 
 export default defineConfig({
   name: 'charity-singers',

@@ -6,12 +6,7 @@
  */
 
 import {defineCliConfig} from 'sanity/cli'
-
-const projectId = process.env.PUBLIC_CHARITY_SINGERS_SANITY_PROJECT_ID!
-const dataset = process.env.PUBLIC_CHARITY_SINGERS_SANITY_DATASET!
-
-console.log('Using projectId:', projectId)
-console.log('test')
+import {projectId, dataset} from './env'
 
 export default defineCliConfig({
   api: {
