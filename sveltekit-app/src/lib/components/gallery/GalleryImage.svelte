@@ -4,11 +4,15 @@
 
 	import Loader from './Loader.svelte'; // Loading animation
 
-	export let dark: boolean; // dark mode
-	export let src: string; // image url
-	export let alt: string; // image alt text
+	interface Props {
+		dark: boolean; // dark mode
+		src: string; // image url
+		alt: string; // image alt text
+	}
 
-	let loaded: boolean = false; // checks if image has loaded
+	let { dark, src, alt }: Props = $props();
+
+	let loaded: boolean = $state(false); // checks if image has loaded
 
 	// checks if image has loaded
 	const onload = createLoadObserver(() => {

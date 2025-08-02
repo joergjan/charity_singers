@@ -6,8 +6,12 @@
 	import About from '$lib/components/About.svelte';
 	import { homeDescription } from '$lib/components/SEO';
 
-	export let data: PageData;
-	$: ({ blogPosts, about, appearances, homeImage } = data);
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let { blogPosts, about, appearances, homeImage } = $derived(data);
 </script>
 
 <svelte:head>

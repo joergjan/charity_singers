@@ -2,8 +2,12 @@
 	import type { PageData } from './$types';
 	import { contactDescription } from '$lib/components/SEO';
 
-	export let data: PageData;
-	$: ({ contact } = data);
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let { contact } = $derived(data);
 </script>
 
 <svelte:head>

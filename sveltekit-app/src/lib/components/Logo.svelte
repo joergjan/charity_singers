@@ -1,7 +1,11 @@
 <script lang="ts">
-	export let className = '';
-	export let fill = '';
-	export let strokeStyle: string = '';
+	interface Props {
+		className?: string;
+		fill?: string;
+		strokeStyle?: string;
+	}
+
+	let { className = '', fill = '', strokeStyle = '' }: Props = $props();
 </script>
 
 <svg {fill} class={className} width="95%" height="95%" viewBox="0 0 550 120">

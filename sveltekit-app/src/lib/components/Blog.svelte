@@ -5,13 +5,17 @@
 	import { Button } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
 
-	export let blogPosts: BlogPost[];
+	interface Props {
+		blogPosts: BlogPost[];
+	}
+
+	let { blogPosts }: Props = $props();
 </script>
 
 <div class="">
 	{#if blogPosts.length}
 		{#each blogPosts as { title, body, date, mainImage }}
-			<div class="mx-auto my-3 max-w-2xl rounded-lg bg-white bg-opacity-5 p-3 lg:max-w-4xl">
+			<div class="mx-auto my-3 max-w-2xl rounded-lg bg-white/5 p-3 lg:max-w-4xl">
 				<div class="space-y-20 lg:space-y-20">
 					<article class="relative isolate flex flex-col gap-8 lg:flex-row">
 						<div
