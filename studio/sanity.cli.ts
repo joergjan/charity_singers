@@ -7,8 +7,11 @@
 
 import {defineCliConfig} from 'sanity/cli'
 
-const projectId = process.env.SANITY_CHARITY_SINGERS_STUDIO_PROJECT_ID! || 'k3558mzz'
-const dataset = process.env.SANITY_CHARITY_SINGERS_STUDIO_DATASET! || 'dev'
+const projectId = process.env.PUBLIC_CHARITY_SINGERS_SANITY_PROJECT_ID!
+const dataset = process.env.PUBLIC_CHARITY_SINGERS_SANITY_DATASET!
+
+console.log('Using projectId:', projectId)
+console.log('test')
 
 export default defineCliConfig({
   api: {
