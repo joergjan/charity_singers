@@ -19,7 +19,7 @@
 		<h2 class="text-xl font-semibold tracking-tight text-white sm:text-7xl">Kontakt</h2>
 
 		<p class="text-md mt-8 text-pretty font-medium text-gray-300 sm:text-xl/8">
-			<a href="mailto:maja.fehr@example.com">{contact.mail}</a>
+			<a href='mailto:{contact.mail}'>{contact.mail}</a>
 		</p>
 		<div class="pt-5 text-sm text-gray-400">
 			<p>{contact.firstname} {contact.lastname}</p>
