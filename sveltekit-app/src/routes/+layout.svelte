@@ -10,10 +10,8 @@
 
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
-	let menu: boolean = false;
-	let isMobile: boolean = false;
-
-	
+	let menu: boolean = $state(false);
+	let isMobile: boolean = $state(false);
 
 	function toggleMenu() {
 		menu = !menu;
