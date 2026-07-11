@@ -17,7 +17,7 @@
 			<h1 class="text-lg font-semibold">Auftritte</h1>
 
 			{#if $page.url.pathname.includes('appearances')}
-				<p class="mb-10 mt-2 text-sm text-gray-300">
+				<p class="mt-2 mb-10 text-sm text-gray-300">
 					Alle unsere anstehenden Auftritte auf einen Blick.
 				</p>
 			{/if}
@@ -29,24 +29,23 @@
 				<table class="min-w-full divide-y divide-gray-700">
 					<thead>
 						<tr>
-							<th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-0"
-								>Auftritt</th
-							>
-							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Ort</th>
 							<th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Datum</th>
+							<th scope="col" class="py-3.5 pr-3 pl-4 text-left text-sm font-semibold sm:pl-0"
+								>Auftritt</th
+							> <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold">Ort</th>
 						</tr>
 					</thead>
 					<tbody class="divide-y divide-gray-800">
 						{#each appearances as { title, location, date }}
 							<tr>
-								<td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium sm:pl-0">{title}</td
+								<td class="px-3 py-4 text-sm whitespace-nowrap">{formatDate(date)}</td>
+								<td class="py-4 pr-3 pl-4 text-sm font-medium whitespace-nowrap sm:pl-0">{title}</td
 								>
-								<td class="flex whitespace-nowrap px-3 py-4 text-sm">
+								<td class="flex px-3 py-4 text-sm whitespace-nowrap">
 									<MapPin />
 
 									<p class="pl-2">{location}</p>
 								</td>
-								<td class="whitespace-nowrap px-3 py-4 text-sm">{formatDate(date)}</td>
 							</tr>
 						{/each}
 					</tbody>
