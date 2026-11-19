@@ -3,9 +3,15 @@ packages:
   - 'studio'
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@sveltejs/adapter-vercel@7.0.5'
+  - '@sveltejs/kit@3.4.0'
 overrides:
   cookie@<0.7.0: 0.7.2
   js-yaml@3: 3.15.2
+  minimatch@>=7.0.0: 11.0.1
   smol-toml@1: 1.9.1
   undici@7: 7.30.1
   uuid@<11.1.1: 11.1.1
+patchedDependencies:
+  '@sveltejs/kit@3.4.0': patches/@sveltejs__kit@3.4.0.patch
